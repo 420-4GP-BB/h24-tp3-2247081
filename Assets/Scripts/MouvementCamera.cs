@@ -11,7 +11,16 @@ public class MouvementCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _joueur = UnityEngine.GameObject.Find("Joueur");
+        if (ParametresParties.Instance.selectionPersonnage.Equals("Fermier"))
+        {
+            _joueur = UnityEngine.GameObject.Find("Fermier");
+            Destroy(UnityEngine.GameObject.Find("Fermiere"));
+        }
+        else if (ParametresParties.Instance.selectionPersonnage.Equals("Fermiere"))
+        {
+            _joueur = UnityEngine.GameObject.Find("Fermiere");
+            Destroy(UnityEngine.GameObject.Find("Fermier"));
+        }
     }
 
     // Update is called once per frame

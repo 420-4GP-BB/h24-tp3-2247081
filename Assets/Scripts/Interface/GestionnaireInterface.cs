@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor;
+using Unity.VisualScripting;
 
 public class GestionnaireInterface : MonoBehaviour
 {
@@ -13,7 +15,16 @@ public class GestionnaireInterface : MonoBehaviour
         Difficile
     }
 
+    enum Personnage
+    {
+        Fermier,
+        Fermière
+    }
+
     private Difficulte difficulte;
+    private Personnage personnage;
+    private string selectionPersonnage;
+
 
     [SerializeField] private TMP_InputField nomJoueur;
     [SerializeField] private TMP_Text presentation;
@@ -24,6 +35,11 @@ public class GestionnaireInterface : MonoBehaviour
 
     [SerializeField] private TMP_Text[] valeursDepart;
     [SerializeField] private TMP_Dropdown difficulteDropdown;
+    [SerializeField] private TMP_Dropdown personnageDropdown;
+
+    [SerializeField] private GameObject showPersonnage;
+    [SerializeField] private GameObject prefabFermier;
+    [SerializeField] private GameObject prefabFermiere;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +47,9 @@ public class GestionnaireInterface : MonoBehaviour
         nomJoueur.text = "Mathurin";
         ChangerNomJoueur();
 
+        selectionPersonnage = "Fermier";
         difficulte = Difficulte.Facile;
+        personnage = Personnage.Fermier;
         MettreAJour(valeursFacile);
     }
 
@@ -58,6 +76,25 @@ public class GestionnaireInterface : MonoBehaviour
         }
     }
 
+    public void ChangerPersonnage()
+    {
+        personnage = (Personnage)personnageDropdown.value;
+
+        switch (personnage)
+        {
+            case Personnage.Fermier:
+                Destroy(showPersonnage);
+                showPersonnage = Instantiate(prefabFermier, showPersonnage.transform.position, showPersonnage.transform.rotation);
+                selectionPersonnage = "Fermier";
+                break;
+            case Personnage.Fermière:
+                Destroy(showPersonnage);
+                showPersonnage = Instantiate(prefabFermiere, showPersonnage.transform.position, showPersonnage.transform.rotation);
+                selectionPersonnage = "Fermiere";
+                break;
+        }
+    }
+
     public void DemarrerPartie()
     {
         int[] valeursActuelles = null;
@@ -80,6 +117,7 @@ public class GestionnaireInterface : MonoBehaviour
         ParametresParties.Instance.SemencesDepart = valeursActuelles[2];
         ParametresParties.Instance.TempsCroissance = valeursActuelles[3];
         ParametresParties.Instance.DelaiCueillete = valeursActuelles[4];
+        ParametresParties.Instance.selectionPersonnage = selectionPersonnage;
 
         if (nomJoueur.text != string.Empty)
         {
