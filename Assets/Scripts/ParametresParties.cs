@@ -6,6 +6,7 @@ public class ParametresParties
     public int OrDepart { get; set; } = 200;
     public int OeufsDepart { get; set; } = 5;
     public int SemencesDepart { get; set; } = 5;
+    public string selectionPersonnage { get; set; } = "Fermier";
 
     ///// <summary>
     ///// Nombre de jours nécessaires à un chou pour être prêts
