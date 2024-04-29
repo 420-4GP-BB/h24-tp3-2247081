@@ -16,7 +16,7 @@ public class MouvementPoulet : MonoBehaviour
     void Start()
     {
         // _zoneRelachement = UnityEngine.GameObject.Find("ZoneRelachePoulet");
-        // joueur = UnityEngine.GameObject.Find("Joueur");
+        // joueur = UnityEngine.GameObject.Find(ParametresParties.Instance.selectionPersonnage);
         // _suivreJoueur = true;
         // _angleDerriere = Random.Range(-60.0f, 60.0f);
 

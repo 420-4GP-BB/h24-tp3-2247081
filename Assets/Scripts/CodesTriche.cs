@@ -16,7 +16,7 @@ public class CodesTriche : MonoBehaviour
     void Start()
     {
         _magasin = GameObject.Find("Magasin");
-        _joueur = GameObject.Find("Joueur");
+        _joueur = GameObject.Find(ParametresParties.Instance.selectionPersonnage);
         _inventaire = _joueur.GetComponent<Inventaire>();
         _controller = _joueur.GetComponent<CharacterController>();
     }

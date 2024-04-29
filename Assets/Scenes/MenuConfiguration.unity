@@ -4281,7 +4281,7 @@ MonoBehaviour:
   personnageDropdown: {fileID: 763072538}
   showPersonnage: {fileID: 447046861}
   prefabFermier: {fileID: 2149980530810422913, guid: 914774922f8b7a04ba9774905ef04072, type: 3}
-  prefabFermiere: {fileID: 2224834628610083241, guid: 1906c8b8d7539724b9f8bed9421c270e, type: 3}
+  prefabFermiere: {fileID: 2224834628610083241, guid: a02af9ce37e59fd4381932285cf9dcc5, type: 3}
 --- !u!4 &1447052501
 Transform:
   m_ObjectHideFlags: 0

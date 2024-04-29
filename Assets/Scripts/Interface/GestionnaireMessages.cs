@@ -13,7 +13,7 @@ public class GestionnaireMessages : MonoBehaviour
     [SerializeField] private UnityEngine.GameObject _menuMaison;
     [SerializeField] private TMP_Text _titre;
     [SerializeField] private TMP_Text _contenu;
-    [SerializeField] private ComportementJoueur _mouvementJoueur;
+    //[SerializeField] private ComportementJoueur _mouvementJoueur;
 
     private bool _finDePartie;
 
