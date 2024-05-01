@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -44,6 +45,8 @@ public class ComportementJoueur : MonoBehaviour
     private Animator _animator;
 
     private Soleil _soleil;
+
+    private float numberTime;
 
 
     // Start is called before the first frame update

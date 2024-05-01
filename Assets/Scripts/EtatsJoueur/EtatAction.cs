@@ -1,3 +1,5 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,6 +14,7 @@ public class EtatAction : EtatJoueur
     private NavMeshAgent _navMeshAgent;
 
     private Vector3 pointDestination;
+    bool isRunning;
 
     public EtatAction(ComportementJoueur sujet, GameObject destination) : base(sujet)
     {
@@ -24,11 +27,9 @@ public class EtatAction : EtatJoueur
         Animateur.SetBool("Walking", true);
         ControleurMouvement.enabled = false;
         _navMeshAgent.enabled = true;
-        Vector3 direction = _destination.transform.position - Sujet.transform.position;
-        Sujet.transform.rotation = Quaternion.LookRotation(direction);
-        Vector3 pointProche = _destination.GetComponent<Collider>().ClosestPoint(Sujet.transform.position);
-        pointDestination = pointProche - direction.normalized * 0.3f;
-        _navMeshAgent.SetDestination(pointDestination);
+        Vector3 direction = _destination.transform.position - Sujet.transform.position;;
+
+        Sujet.StartCoroutine(waitRotation());
     }
 
     // On doit se rendre au point pour faire l'action
@@ -82,6 +83,24 @@ public class EtatAction : EtatJoueur
         //    }
         //    ControleurMouvement.enabled = true;
         //}
+    }
+
+    public IEnumerator waitRotation()
+    {
+        float angleRotation = 0;
+        Vector3 direction = _destination.transform.position - Sujet.transform.position;
+        while (angleRotation <= 0.10f)
+        {
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+            Quaternion joueurRotation = Quaternion.Slerp(Sujet.transform.rotation, lookRotation, angleRotation);
+            Sujet.transform.rotation = joueurRotation;
+            yield return new WaitForSeconds(0.01f);
+            angleRotation += Time.deltaTime;
+        }
+
+        Vector3 pointProche = _destination.GetComponent<Collider>().ClosestPoint(Sujet.transform.position);
+        pointDestination = pointProche - direction.normalized * 0.3f;
+        _navMeshAgent.SetDestination(pointDestination);
     }
 
     public override void Exit()
