@@ -14,6 +14,8 @@ public class AffichageRessource : MonoBehaviour
     [SerializeField] private TMP_Text textViande;
     [SerializeField] private TMP_Text textChoux;
     [SerializeField] private TMP_Text textGraines;
+    [SerializeField] private TMP_Text textBois;
+
 
     private Color couleurParDefautEnergie;
     
@@ -34,6 +36,7 @@ public class AffichageRessource : MonoBehaviour
         textViande.text = ressourcesJoueurs.Oeuf.ToString();
         textChoux.text = ressourcesJoueurs.Choux.ToString();
         textGraines.text = ressourcesJoueurs.Graines.ToString();
+        textBois.text = ressourcesJoueurs.Bois.ToString();
         _energieJoueurTexte.text = Mathf.RoundToInt(energieJoueur.Energie * 100) + "%";
 
         if (energieJoueur.EnergieFaible)

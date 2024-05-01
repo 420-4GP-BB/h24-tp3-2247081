@@ -4,6 +4,7 @@ public static class ConstantesJeu
     // dans le jeu
     public const float COUT_MARCHER = 0.001f;
     public const float COUT_COURIR = 0.005f;
+    public const float COUT_ABATTRE = 0.005f;
     public const float COUT_PLANTER = 0.002f;
     public const float COUT_CUEILLIR = 0.001f;
     public const float COUT_IMMOBILE = 0.0001f;
