@@ -55,6 +55,11 @@ public class CodesTriche : MonoBehaviour
             _inventaire.Choux += 10;
         }
 
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            _inventaire.Bois += 10;
+        }
+
         if (Input.GetKeyDown(KeyCode.G))
         {
             _inventaire.Graines += 10;

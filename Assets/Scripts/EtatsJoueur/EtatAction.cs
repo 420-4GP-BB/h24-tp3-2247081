@@ -27,7 +27,6 @@ public class EtatAction : EtatJoueur
         Animateur.SetBool("Walking", true);
         ControleurMouvement.enabled = false;
         _navMeshAgent.enabled = true;
-        Vector3 direction = _destination.transform.position - Sujet.transform.position;;
 
         Sujet.StartCoroutine(waitRotation());
     }

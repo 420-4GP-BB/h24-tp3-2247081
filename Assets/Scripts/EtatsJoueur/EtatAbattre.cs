@@ -21,17 +21,17 @@ public class EtatAbattre : EtatJoueur
         Animateur.SetBool("Pousser", true);
     }
 
-    public override void Exit()
+    public override void Handle()
     {
         _tempsDeAbattre += Time.deltaTime;
-        if (_tempsDeAbattre >= 5.0f)
+        if (_tempsDeAbattre >= 2.0f)
         {
             _abattable.Abattre(Inventaire);
             Sujet.ChangerEtat(Sujet.EtatNormal);
         }
     }
 
-    public override void Handle()
+    public override void Exit()
     {
         Animateur.SetBool("Pousser", false);
     }

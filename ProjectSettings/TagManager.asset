@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PointsPoulet
   - Poule
+  - Arbre
   layers:
   - Default
   - TransparentFX
