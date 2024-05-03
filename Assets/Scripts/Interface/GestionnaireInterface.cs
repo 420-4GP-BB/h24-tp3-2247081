@@ -24,6 +24,7 @@ public class GestionnaireInterface : MonoBehaviour
     private Difficulte difficulte;
     private Personnage personnage;
     private string selectionPersonnage;
+    private string selectionArbre;
 
 
     [SerializeField] private TMP_InputField nomJoueur;
@@ -36,6 +37,7 @@ public class GestionnaireInterface : MonoBehaviour
     [SerializeField] private TMP_Text[] valeursDepart;
     [SerializeField] private TMP_Dropdown difficulteDropdown;
     [SerializeField] private TMP_Dropdown personnageDropdown;
+    [SerializeField] private TMP_Dropdown generationDropdown;
 
     [SerializeField] private GameObject showPersonnage;
     [SerializeField] private GameObject prefabFermier;
@@ -48,6 +50,7 @@ public class GestionnaireInterface : MonoBehaviour
         ChangerNomJoueur();
 
         selectionPersonnage = "Fermier";
+        selectionArbre = "Grille";
         difficulte = Difficulte.Facile;
         personnage = Personnage.Fermier;
         MettreAJour(valeursFacile);
@@ -118,6 +121,7 @@ public class GestionnaireInterface : MonoBehaviour
         ParametresParties.Instance.TempsCroissance = valeursActuelles[3];
         ParametresParties.Instance.DelaiCueillete = valeursActuelles[4];
         ParametresParties.Instance.selectionPersonnage = selectionPersonnage;
+        ParametresParties.Instance.selectionArbre = selectionArbre;
 
         if (nomJoueur.text != string.Empty)
         {
