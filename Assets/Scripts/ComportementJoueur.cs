@@ -53,7 +53,7 @@ public class ComportementJoueur : MonoBehaviour
     void Start()
     {
         Physics.IgnoreCollision(GetComponent<Collider>(),
-            UnityEngine.GameObject.Find("NavMeshObstacle").GetComponent<Collider>());
+            UnityEngine.GameObject.Find("ZoneRelachePoulet").GetComponent<Collider>());
         EtatNormal = new EtatNormal(this);
 
         _soleil = UnityEngine.GameObject.Find("Directional Light").GetComponent<Soleil>();
