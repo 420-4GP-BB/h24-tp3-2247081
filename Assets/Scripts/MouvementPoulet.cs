@@ -66,6 +66,7 @@ public class MouvementPoulet : MonoBehaviour
         if (other.CompareTag("Relache"))
         {
             _suivreJoueur = false;
+            _agent.speed = 0.25f;
             ChoisirDestinationAleatoire();
             gameObject.GetComponent<PondreOeufs>().enabled = true;
         }
