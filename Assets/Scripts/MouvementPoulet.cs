@@ -12,9 +12,11 @@ public class MouvementPoulet : MonoBehaviour
     private Animator _animator;
 
     private GameObject[] _pointsDeDeplacement;
+    private GameObject renard;
 
     void Start()
     {
+        renard = GameObject.Find("Fox");
         _zoneRelachement = UnityEngine.GameObject.Find("ZoneRelachePoulet");
         joueur = UnityEngine.GameObject.Find(ParametresParties.Instance.selectionPersonnage);
         _suivreJoueur = true;
@@ -46,7 +48,7 @@ public class MouvementPoulet : MonoBehaviour
         {
             _agent.SetDestination(joueur.transform.position - joueur.transform.forward);
         }
-        else if (!_suivreJoueur)
+        else
         {
             GameObject point = _pointsDeDeplacement[Random.Range(0, _pointsDeDeplacement.Length)];
             _agent.SetDestination(point.transform.position);
@@ -67,8 +69,12 @@ public class MouvementPoulet : MonoBehaviour
         {
             _suivreJoueur = false;
             _agent.speed = 0.25f;
-            ChoisirDestinationAleatoire();
             gameObject.GetComponent<PondreOeufs>().enabled = true;
+        }
+
+        if (other.CompareTag("Renard"))
+        {
+            Destroy(gameObject);
         }
     }
 }

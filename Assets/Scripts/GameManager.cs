@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Soleil _soleil;
+    [SerializeField] private GameObject _renard;
 
     private ComportementJoueur _joueur;
 
@@ -12,10 +13,14 @@ public class GameManager : MonoBehaviour
     private Inventaire _inventaireJoueur;
     private EnergieJoueur _energieJoueur;
     private ChouMesh3D[] _chous;
+
+    private GameObject[] pointsRenard;
+
     public int NumeroJour = 1;
 
     void Start()
     {
+        pointsRenard = GameObject.FindGameObjectsWithTag("PointsRenard");
         _joueur = GameObject.Find(ParametresParties.Instance.selectionPersonnage).GetComponent<ComportementJoueur>();
         _inventaireJoueur = _joueur.GetComponent<Inventaire>();
         _energieJoueur = _joueur.GetComponent<EnergieJoueur>();
@@ -54,6 +59,14 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1;
         }
 
+        if (_soleil.EstNuit && GameObject.Find("Fox(Clone)") == null)
+        {
+            Instantiate(_renard, pointsRenard[Random.Range(0, pointsRenard.Length)].transform.position, Quaternion.identity);
+        }
+        else if (!_soleil.EstNuit)
+        {
+            Destroy(GameObject.Find("Fox(Clone)"));
+        }
         // L'?tat du joueur peut affecter le passage du temps (ex.: Dodo: tout va vite, menus: le temps est stopp?, etc)
         Time.timeScale *= _joueur.GetComponent<ComportementJoueur>().MultiplicateurScale;
     }

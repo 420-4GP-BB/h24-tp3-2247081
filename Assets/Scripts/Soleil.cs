@@ -34,9 +34,9 @@ public class Soleil : MonoBehaviour
     public float ProportionRestante => dureeJourneeRestante / dureeJournee;
 
     /// <summary>
-    /// Indique si on est présentement pendant la nuit (entre 21h et 5h am)
+    /// Indique si on est présentement pendant la nuit (entre 21h et 8h am)
     /// </summary>
-    public bool EstNuit => ProportionRestante >= progression21h || ProportionRestante <= progression5h;
+    public bool EstNuit => ProportionRestante >= 0.67f || ProportionRestante <= 0.12f;
 
     [Header("Rotation pour changer graduellement la direction des ombres")]
     [SerializeField] private Vector3 rotationDepart;

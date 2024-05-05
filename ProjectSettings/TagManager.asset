@@ -9,6 +9,7 @@ TagManager:
   - Arbre
   - Relache
   - PointsRenard
+  - Renard
   layers:
   - Default
   - TransparentFX
