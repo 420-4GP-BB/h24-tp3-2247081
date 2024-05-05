@@ -10,7 +10,6 @@ public class MouvementRenard : MonoBehaviour
     private GameObject[] _pointsDeDeplacement;
     private GameObject[] pouleFerme;
     private GameObject pouleTarget;
-    private float pouletClosest;
 
     void Start()
     {
@@ -34,23 +33,24 @@ public class MouvementRenard : MonoBehaviour
     bool PouletVisible()
     {
         pouleFerme = GameObject.FindGameObjectsWithTag("Poule");
-        if (pouleFerme != null)
-        {
-            foreach (GameObject poule in pouleFerme)
-            {
-                RaycastHit hit;
-                Vector3 directionPoulet = poule.transform.position - transform.position;
+        float closestDistance = Mathf.Infinity;
+        GameObject pouletProche = null;
 
-                // Regarde s'il y a un obstacle entre le renard et la poule
-                if (Physics.Raycast(transform.position, directionPoulet, out hit))
-                {
-                    if (hit.transform.CompareTag("Poule") && hit.distance < 5)
-                    {
-                        pouleTarget = poule;
-                        return true;
-                    }
-                }
+        foreach (GameObject poule in pouleFerme)
+        {
+            float distance = Vector3.Distance(transform.position, poule.transform.position);
+
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                pouletProche = poule;
             }
+        }
+
+        if (pouletProche != null && closestDistance < 5)
+        {
+            pouleTarget = pouletProche;
+            return true;
         }
 
         return false;
@@ -62,17 +62,9 @@ public class MouvementRenard : MonoBehaviour
         {
             _agent.SetDestination(pouleTarget.transform.position);
         }
-        else if (!_agent.pathPending && _agent.remainingDistance < 0.5f)
+        else if (!_agent.pathPending && _agent.remainingDistance < 0.5f && !PouletVisible())
         {
             ChoisirDestinationAleatoire();
-        }
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Poule"))
-        {
-            _agent.SetDestination(pouleTarget.transform.position);
         }
     }
 }
