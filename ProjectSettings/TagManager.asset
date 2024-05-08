@@ -10,6 +10,7 @@ TagManager:
   - Relache
   - PointsRenard
   - Renard
+  - BlockArbre
   layers:
   - Default
   - TransparentFX

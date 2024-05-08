@@ -7465,8 +7465,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1447052500}
-        m_TargetAssemblyTypeName: GestionnaireInterface, Assembly-CSharp
-        m_MethodName: ChangerDifficulte
+        m_TargetAssemblyTypeName: GestionnaireInterface, Scripts
+        m_MethodName: ChangerGeneration
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

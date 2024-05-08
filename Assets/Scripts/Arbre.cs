@@ -17,7 +17,6 @@ public class Arbre : MonoBehaviour, IAbattable
     {
         player = GameObject.Find(ParametresParties.Instance.selectionPersonnage).GetComponent<Transform>();
         mustFall = true;
-        //TIMBER();
     }
 
     public EtatJoueur EtatAUtiliser(ComportementJoueur Sujet)

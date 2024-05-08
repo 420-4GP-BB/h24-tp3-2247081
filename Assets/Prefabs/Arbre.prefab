@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4054923551444985980}
   m_Layer: 0
   m_Name: Arbre
-  m_TagString: Untagged
+  m_TagString: Arbre
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6df5e5d5d68afd34bb6da7a0d19b10aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  logPrefab: {fileID: 0}
+  logPrefab: {fileID: 5603604426353082787}
 --- !u!1001 &5602712512508882251
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -179,6 +179,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 640e2e58c89e3714881006bd0c5eeabf, type: 3}
+--- !u!1 &5603604426353082787 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1360994071702760, guid: 640e2e58c89e3714881006bd0c5eeabf, type: 3}
+  m_PrefabInstance: {fileID: 5602712512508882251}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5607382147395865901 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4988496768901222, guid: 640e2e58c89e3714881006bd0c5eeabf, type: 3}

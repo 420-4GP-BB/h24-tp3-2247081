@@ -20,9 +20,17 @@ public class GestionnaireInterface : MonoBehaviour
         Fermier,
         Fermière
     }
+    enum Generation
+    {
+        Grille,
+        Random,
+        Simulation
+    }
+
 
     private Difficulte difficulte;
     private Personnage personnage;
+    private Generation generation;
     private string selectionPersonnage;
     private string selectionArbre;
 
@@ -75,6 +83,24 @@ public class GestionnaireInterface : MonoBehaviour
                 break;
             case Difficulte.Difficile:
                 MettreAJour(valeursDifficile);
+                break;
+        }
+    }
+
+    public void ChangerGeneration()
+    {
+        generation = (Generation)generationDropdown.value;
+
+        switch (generation)
+        {
+            case Generation.Grille:
+                selectionArbre = "Grille";
+                break;
+            case Generation.Random:
+                selectionArbre = "Random";
+                break;
+            case Generation.Simulation:
+                selectionArbre = "Simulation";
                 break;
         }
     }
