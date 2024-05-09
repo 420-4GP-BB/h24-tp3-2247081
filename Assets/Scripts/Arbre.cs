@@ -12,6 +12,7 @@ public class Arbre : MonoBehaviour, IAbattable
     private float rotationTotal = 0;
     private int DureeTombee = 2;
     private bool isRunning = false;
+    private RectTransform arbreRect;
 
     public void Abattre(Inventaire inventaireJoueur)
     {
@@ -64,5 +65,14 @@ public class Arbre : MonoBehaviour, IAbattable
             GameObject.Find(transform.gameObject.name).transform.GetChild(0).position, 
             GameObject.Find(transform.gameObject.name).transform.GetChild(0).rotation);
         Destroy(gameObject);
+    }
+
+    void OnCollisionEnter(Collision other)
+    {
+        arbreRect = GetComponent<RectTransform>();
+        if (other.contactCount > 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
