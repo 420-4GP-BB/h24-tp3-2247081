@@ -29,11 +29,10 @@ public class GenererForet : MonoBehaviour
                 creerArbre = new GenererRandom();
                 break;
             case "Simulation":
-                creerArbre = new GenererGrille();
+                creerArbre = new GenererSimulation();
                 break;
         }
 
-        print(ParametresParties.Instance.selectionArbre);
         creerArbre.generationArbre(boundsX, boundsZ, prefabArbre, parentForet);
     }
 }
