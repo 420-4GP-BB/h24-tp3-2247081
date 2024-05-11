@@ -10,6 +10,7 @@ public static class ConstantesJeu
     public const float COUT_IMMOBILE = 0.0001f;
 
     // Ce que le joueur peut gagner en énergie
+    public const float GAIN_ENERGIE_MANGER_COLLATION = 0.15f;
     public const float GAIN_ENERGIE_MANGER_OEUF = 0.25f;
     public const float GAIN_ENERGIE_MANGER_CHOU = 0.35f;
     public const float GAIN_ENERGIE_SOMMEIL = 0.005f;    // Le joueur gagne de l'énergie en dormant
