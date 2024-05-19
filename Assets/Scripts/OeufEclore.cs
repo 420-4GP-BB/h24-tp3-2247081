@@ -9,11 +9,6 @@ public class OeufEclore : MonoBehaviour
     private int journeesDeVie = 0;
     private float _tempsCroissance;
 
-    public bool Eclore
-    {
-        get => journeesDeVie >= ParametresParties.Instance.TempsCroissance;
-    }
-
     // Start is called before the first frame update
     void Start()
     {
