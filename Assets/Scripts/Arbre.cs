@@ -60,9 +60,10 @@ public class Arbre : MonoBehaviour, IAbattable
     IEnumerator affichageLog()
     {
         yield return new WaitForSeconds(1);
-        Instantiate(GameObject.Find(transform.gameObject.name).transform.GetChild(0), 
-            GameObject.Find(transform.gameObject.name).transform.GetChild(0).position, 
-            GameObject.Find(transform.gameObject.name).transform.GetChild(0).rotation);
+        Transform log = Instantiate(transform.GetChild(0), 
+            new Vector3(transform.GetChild(0).position.x, 0.3f, transform.GetChild(0).position.z), 
+            transform.GetChild(0).rotation);
+        log.gameObject.AddComponent<Rigidbody>();
         Destroy(gameObject);
     }
 }
