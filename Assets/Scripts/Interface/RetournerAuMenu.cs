@@ -10,5 +10,10 @@ public class RetournerAuMenu : MonoBehaviour
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(0);
         }
+
+        if (Input.GetKey(KeyCode.F5))
+        {
+            GestionnaireSauvegarde.Instance.SauvegarderPartie();
+        }
     }
 }

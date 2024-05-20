@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEditor;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class GestionnaireInterface : MonoBehaviour
 {
@@ -33,7 +34,9 @@ public class GestionnaireInterface : MonoBehaviour
     private Generation generation;
     private string selectionPersonnage;
     private string selectionArbre;
+    private GameManager gameManager;
 
+    [SerializeField] private Button boutonCharger;
 
     [SerializeField] private TMP_InputField nomJoueur;
     [SerializeField] private TMP_Text presentation;
@@ -62,6 +65,10 @@ public class GestionnaireInterface : MonoBehaviour
         difficulte = Difficulte.Facile;
         personnage = Personnage.Fermier;
         MettreAJour(valeursFacile);
+
+        // Ajouter la méthode charger partie au bouton
+        boutonCharger.onClick.AddListener(RestaurerPartie);
+        boutonCharger.interactable = GestionnaireSauvegarde.Instance.FichierExiste;
     }
 
     void Update()
@@ -153,6 +160,16 @@ public class GestionnaireInterface : MonoBehaviour
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene("Ferme");
         }
+    }
+
+    public void RestaurerPartie()
+    {
+        GestionnaireSauvegarde.Instance.ChargerPartie("Ferme");
+    }
+
+    public void ChargerJeu()
+    {
+        SceneManager.LoadScene("Ferme");
     }
 
     public void QuitterJeu()

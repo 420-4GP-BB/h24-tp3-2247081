@@ -12,7 +12,7 @@ public class MouvementPoulet : MonoBehaviour
     private NavMeshAgent _agent;
     private Animator _animator;
 
-    private GameObject[] _pointsDeDeplacement;
+    public GameObject[] _pointsDeDeplacement;
 
     void Start()
     {
