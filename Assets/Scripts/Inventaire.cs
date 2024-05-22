@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class Inventaire : MonoBehaviour
 {
-    public int Or { get; set; }
-    public int Oeuf { get; set; }
-    public int Choux { get; set; }
-    public int Graines { get; set; }
-    public int Bois { get; set; }
+    [HideInInspector][SerializeField] public int Or { get; set; }
+    [HideInInspector][SerializeField] public int Oeuf { get; set; }
+    [HideInInspector][SerializeField] public int Choux { get; set; }
+    [HideInInspector][SerializeField] public int Graines { get; set; }
+    [HideInInspector][SerializeField] public int Bois { get; set; }
 
     void Awake()
     {

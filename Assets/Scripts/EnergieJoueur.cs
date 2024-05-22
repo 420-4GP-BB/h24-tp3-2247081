@@ -11,7 +11,7 @@ public class EnergieJoueur : MonoBehaviour
     private ComportementJoueur _mouvementJoueur;
     private float _energie = 1.0f;
 
-    public float Energie
+    [SerializeField] public float Energie
     {
         get => _energie;
         set

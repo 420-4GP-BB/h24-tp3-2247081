@@ -3,37 +3,34 @@ using LitJson;
 
 public class SauvegarderJoueur : SauvegardeBase
 {
-    private Inventaire _inventaire;
-    private EnergieJoueur _energieJoueur;
-    private Soleil _soleil;
-    private GameManager _gameManager;
-
     public override JsonData SavedData()
     {
-        _inventaire = GetComponent<Inventaire>();
-        _energieJoueur = GetComponent<EnergieJoueur>();
-        _soleil = GameObject.Find("Directional Light").GetComponent<Soleil>();
-        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        JsonData data = SavedTransform;
+        data["inventaire"] = JsonUtility.ToJson(GetComponent<Inventaire>());
+        data["energie"] = JsonUtility.ToJson(GetComponent<EnergieJoueur>());
+        data["temps"] = JsonUtility.ToJson(GameObject.Find("Directional Light").GetComponent<Soleil>());
+        data["gameManager"] = JsonUtility.ToJson(GameObject.Find("GameManager").GetComponent<GameManager>());
+
+        Debug.Log(data["inventaire"]);
+        Debug.Log(data["energie"]);
+        Debug.Log(data["temps"]);
+        Debug.Log(data["gameManager"]);
 
         PlayerPrefs.SetString("Nom", ParametresParties.Instance.NomJoueur);
         PlayerPrefs.SetString("Personnage", ParametresParties.Instance.selectionPersonnage);
         PlayerPrefs.SetString("Generation", ParametresParties.Instance.selectionArbre);
-
-        PlayerPrefs.SetInt("Or", _inventaire.Or);
-        PlayerPrefs.SetInt("Oeuf", _inventaire.Oeuf);
-        PlayerPrefs.SetInt("Choux", _inventaire.Choux);
-        PlayerPrefs.SetInt("Graines", _inventaire.Graines);
-        PlayerPrefs.SetInt("Buche", _inventaire.Bois);
-
-        PlayerPrefs.SetFloat("Energie", _energieJoueur.Energie);
-        //PlayerPrefs.SetFloat("Temps", _soleil.ProportionRestante);
-        PlayerPrefs.SetInt("Jour", _gameManager.NumeroJour);
+        PlayerPrefs.Save();
 
         return SavedTransform;
     }
 
     public override void LoadFromData(JsonData data)
     {
+        JsonUtility.FromJsonOverwrite(data["inventaire"].ToString(), GetComponent<Inventaire>());
+        JsonUtility.FromJsonOverwrite(data["energie"].ToString(), GetComponent<EnergieJoueur>());
+        JsonUtility.FromJsonOverwrite(data["temps"].ToString(), GameObject.Find("Directional Light").GetComponent<Soleil>());
+        JsonUtility.FromJsonOverwrite(data["gameManager"].ToString(), GameObject.Find("GameManager").GetComponent<GameManager>());
+
         // IMPORTANT: Puisqu'il y a un CharacterController, on ne peut pas modifier la
         // transform sans le désactiver et réactiver.
         // On aurait Un problème similaire avec un NavMesh.

@@ -159,6 +159,9 @@ public class GestionnaireInterface : MonoBehaviour
         ParametresParties.Instance.DelaiCueillete = valeursActuelles[4];
         ParametresParties.Instance.selectionPersonnage = selectionPersonnage;
         ParametresParties.Instance.selectionArbre = selectionArbre;
+        ParametresParties.Instance.tempCourant = 8.0f / 24;
+        ParametresParties.Instance.numeroJour = 1;
+        ParametresParties.Instance.energie = 1;
 
         if (nomJoueur.text != string.Empty)
         {
@@ -171,15 +174,6 @@ public class GestionnaireInterface : MonoBehaviour
         ParametresParties.Instance.NomJoueur = PlayerPrefs.GetString("Nom");
         ParametresParties.Instance.selectionPersonnage = PlayerPrefs.GetString("Personnage");
         ParametresParties.Instance.selectionArbre = PlayerPrefs.GetString("Generation");
-        ParametresParties.Instance.OrDepart = PlayerPrefs.GetInt("Or");
-        ParametresParties.Instance.OeufsDepart = PlayerPrefs.GetInt("Oeuf");
-        ParametresParties.Instance.Chou = PlayerPrefs.GetInt("Choux");
-        ParametresParties.Instance.SemencesDepart = PlayerPrefs.GetInt("Graines");
-        ParametresParties.Instance.Bois = PlayerPrefs.GetInt("Buche");
-
-        energie.Energie = PlayerPrefs.GetFloat("Energie");
-        //_soleil.ProportionRestante = PlayerPrefs.GetFloat("Temps");
-        gameManager.NumeroJour = PlayerPrefs.GetInt("Jour");
 
         GestionnaireSauvegarde.Instance.ChargerPartie("Ferme");
     }

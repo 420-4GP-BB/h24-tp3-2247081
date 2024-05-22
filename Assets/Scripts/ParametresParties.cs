@@ -10,6 +10,9 @@ public class ParametresParties
     public int SemencesDepart { get; set; } = 5;
     public string selectionPersonnage { get; set; } = "Fermier";
     public string selectionArbre { get; set; } = "Grille";
+    public float tempCourant { get; set; } = 8.0f / 24;
+    public int numeroJour { get; set; } = 1;
+    public float energie { get; set; } = 1;
 
     ///// <summary>
     ///// Nombre de jours nécessaires à un chou pour être prêts
