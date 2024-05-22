@@ -6347,18 +6347,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1030118659784809182, guid: 914774922f8b7a04ba9774905ef04072, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4293846920567441082, guid: 914774922f8b7a04ba9774905ef04072, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977492036096804156, guid: 914774922f8b7a04ba9774905ef04072, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1629620587528084539, guid: b6712909ca9410945a06b5fda6a3080d, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -6414,6 +6402,18 @@ PrefabInstance:
     - target: {fileID: 2149980530810422913, guid: b6712909ca9410945a06b5fda6a3080d, type: 3}
       propertyPath: m_Name
       value: Fermier (Show)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030118659784809182, guid: 914774922f8b7a04ba9774905ef04072, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4293846920567441082, guid: 914774922f8b7a04ba9774905ef04072, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977492036096804156, guid: 914774922f8b7a04ba9774905ef04072, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8977492036096804156, guid: 914774922f8b7a04ba9774905ef04072, type: 3}

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class RetournerAuMenu : MonoBehaviour
@@ -8,12 +9,14 @@ public class RetournerAuMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            GestionnaireSauvegarde.Instance.SauvegarderPartie();
+            StartCoroutine(waitTime());
             UnityEngine.SceneManagement.SceneManager.LoadScene(0);
         }
+    }
 
-        if (Input.GetKey(KeyCode.F5))
-        {
-            GestionnaireSauvegarde.Instance.SauvegarderPartie();
-        }
+    IEnumerator waitTime()
+    {
+        yield return new WaitForSeconds(1);
     }
 }

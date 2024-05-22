@@ -35,6 +35,7 @@ public class GestionnaireInterface : MonoBehaviour
     private string selectionPersonnage;
     private string selectionArbre;
     private GameManager gameManager;
+    private EnergieJoueur energie;
 
     [SerializeField] private Button boutonCharger;
 
@@ -69,6 +70,9 @@ public class GestionnaireInterface : MonoBehaviour
         // Ajouter la méthode charger partie au bouton
         boutonCharger.onClick.AddListener(RestaurerPartie);
         boutonCharger.interactable = GestionnaireSauvegarde.Instance.FichierExiste;
+
+        //gameManager = GetComponent<GameManager>();
+        //energie = GameObject.Find(ParametresParties.Instance.selectionPersonnage).GetComponent<EnergieJoueur>();
     }
 
     void Update()
@@ -164,12 +168,20 @@ public class GestionnaireInterface : MonoBehaviour
 
     public void RestaurerPartie()
     {
-        GestionnaireSauvegarde.Instance.ChargerPartie("Ferme");
-    }
+        ParametresParties.Instance.NomJoueur = PlayerPrefs.GetString("Nom");
+        ParametresParties.Instance.selectionPersonnage = PlayerPrefs.GetString("Personnage");
+        ParametresParties.Instance.selectionArbre = PlayerPrefs.GetString("Generation");
+        ParametresParties.Instance.OrDepart = PlayerPrefs.GetInt("Or");
+        ParametresParties.Instance.OeufsDepart = PlayerPrefs.GetInt("Oeuf");
+        ParametresParties.Instance.Chou = PlayerPrefs.GetInt("Choux");
+        ParametresParties.Instance.SemencesDepart = PlayerPrefs.GetInt("Graines");
+        ParametresParties.Instance.Bois = PlayerPrefs.GetInt("Buche");
 
-    public void ChargerJeu()
-    {
-        SceneManager.LoadScene("Ferme");
+        energie.Energie = PlayerPrefs.GetFloat("Energie");
+        //_soleil.ProportionRestante = PlayerPrefs.GetFloat("Temps");
+        gameManager.NumeroJour = PlayerPrefs.GetInt("Jour");
+
+        GestionnaireSauvegarde.Instance.ChargerPartie("Ferme");
     }
 
     public void QuitterJeu()
