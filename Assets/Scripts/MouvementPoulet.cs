@@ -43,6 +43,7 @@ public class MouvementPoulet : MonoBehaviour
 
     void ChoisirDestinationAleatoire()
     {
+        //Suit le joueur jusqu'à la ferme depuis l'achat
         if (_suivreJoueur)
         {
             _agent.SetDestination(joueur.transform.position - joueur.transform.forward);
@@ -70,7 +71,7 @@ public class MouvementPoulet : MonoBehaviour
             _agent.speed = 0.25f;
             gameObject.GetComponent<PondreOeufs>().enabled = true;
         }
-
+        //S'il est en contact avec le renard, il meurt
         if (other.CompareTag("Renard"))
         {
             Destroy(gameObject);
