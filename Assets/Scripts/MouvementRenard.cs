@@ -46,7 +46,7 @@ public class MouvementRenard : MonoBehaviour
                 pouletProche = poule;
             }
         }
-
+        //Condition qui regarde quel poule est la plus proche
         if (pouletProche != null && closestDistance < 5)
         {
             pouleTarget = pouletProche;
@@ -58,12 +58,13 @@ public class MouvementRenard : MonoBehaviour
 
     void Update()
     {
-        if (PouletVisible())
+        if (PouletVisible()) //Regarde si la poule est visible
         {
             _agent.SetDestination(pouleTarget.transform.position);
         }
         else if (!_agent.pathPending && _agent.remainingDistance < 0.5f && !PouletVisible())
         {
+            //Sinon, continue sa patrouille
             ChoisirDestinationAleatoire();
         }
     }
