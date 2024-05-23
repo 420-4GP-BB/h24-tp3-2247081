@@ -20,6 +20,7 @@ public class GenererForet : MonoBehaviour
         float boundsX = transform.localScale.x * bounds.size.x;
         float boundsZ = transform.localScale.z * bounds.size.z;
 
+        //Switch qui regarde quel style d'arbre de génération a été selectionnée
         switch (ParametresParties.Instance.selectionArbre)
         {
             case "Grille":
@@ -32,7 +33,7 @@ public class GenererForet : MonoBehaviour
                 creerArbre = new GenererSimulation();
                 break;
         }
-
+        //Génére la forêt selon la taille du terrain
         creerArbre.generationArbre(boundsX, boundsZ, prefabArbre, parentForet);
     }
 }

@@ -12,15 +12,18 @@ public class GenererRandom : GenererArbre
         {
             Vector3 positionInstantiate = new Vector3(Random.Range(0, boundsX) , 0 , Random.Range(0, boundsZ));
             Rect nouveauArbre = new Rect(positionInstantiate.x, positionInstantiate.z, 3, 3);
-
+            
+            //Regarde si la position de l'arbre est près d'un autre
             if (!checkOverlap(nouveauArbre))
             {
+                //Sinon, il va être instantiate
                 GameObject.Instantiate(arbre, new Vector3(positionInstantiate.x, 0, positionInstantiate.z), Quaternion.Euler(0, Random.Range(0, 360), 0), parentForet);
                 listeAreaPris.Add(nouveauArbre);
             }
         }
     }
 
+    //Regarde si les arbres overlaps sur les autres
     private bool checkOverlap(Rect nouveauArbre)
     {
         foreach (Rect areaPris in listeAreaPris)

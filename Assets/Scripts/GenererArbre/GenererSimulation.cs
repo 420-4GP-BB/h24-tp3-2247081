@@ -5,7 +5,7 @@ using UnityEngine;
 public class GenererSimulation : GenererArbre
 {
     private List<Rect> listeAreaPris = new List<Rect>();
-
+    //Aide avec ChatGPT
     private readonly (int, int)[] directions = {
         (-1, -1), (-1, 0), (-1, 1),
         (0, -1),         (0, 1),
@@ -17,16 +17,16 @@ public class GenererSimulation : GenererArbre
         int gridSize = 128;
         bool[,] arbreGrid = new bool[gridSize, gridSize];
 
-        // Initial grid with 70% chance of trees
+        // Initialiser les arbres sur un grid
         for (int x = 0; x < gridSize; x++)
         {
             for (int z = 0; z < gridSize; z++)
             {
-                arbreGrid[x, z] = Random.value < 0.7f;
+                arbreGrid[x, z] = Random.value < 0.7f; //Une chance de 70% d'être présent
             }
         }
 
-        // Apply simulation rules for 10 generations
+        // Faire rouler 10 génération (Aide avec ChatGPT)
         for (int generation = 0; generation < 10; generation++)
         {
             bool[,] nextGeneration = new bool[gridSize, gridSize];
@@ -51,7 +51,7 @@ public class GenererSimulation : GenererArbre
             arbreGrid = nextGeneration;
         }
 
-        // Instantiate trees based on the final grid
+        // Créer les arbres après les 10 générations
         for (int x = 0; x < gridSize; x++)
         {
             for (int z = 0; z < gridSize; z++)
@@ -73,6 +73,7 @@ public class GenererSimulation : GenererArbre
         }
     }
 
+    //Regarde si les arbres overlaps sur les autres
     private bool checkOverlap(Rect nouveauArbre)
     {
         foreach (Rect areaPris in listeAreaPris)
@@ -84,7 +85,8 @@ public class GenererSimulation : GenererArbre
         }
         return false;
     }
-
+    
+    //Compter les voisins d'arbre autour de l'arbre (Aide avec ChatGPT)
     private int CountNeighbors(bool[,] grid, int x, int z)
     {
         int count = 0;
