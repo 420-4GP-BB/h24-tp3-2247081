@@ -19,6 +19,7 @@ public class OeufEclore : MonoBehaviour
     void Update()
     {
         _tempsCroissance += _soleil.DeltaMinutesEcoulees;
+        //Voir si cela fait 3 jours que l'oeuf est toujours à terre
         if (_tempsCroissance >= ConstantesJeu.MINUTES_PAR_JOUR)
         {
             _tempsCroissance = 0.0f;
@@ -31,6 +32,7 @@ public class OeufEclore : MonoBehaviour
         journeesDeVie++;
         if (journeesDeVie >= 3)
         {
+            //Condition qui regarde si l'oeuf fait apparaître ou non
             if (Random.Range(0, 100) <= 75)
             {
                 oeufPerdu();
