@@ -31,7 +31,8 @@ public class Arbre : MonoBehaviour, IAbattable
 
     private void OnMouseDown()
     {
-        if (mustFall)
+        //Condition qu'indique que l'arbre doit tomber
+        if (mustFall) 
         {
             mustFall = false;
         }
@@ -39,12 +40,14 @@ public class Arbre : MonoBehaviour, IAbattable
 
     void Update()
     {
+        //Animation que l'arbre tombe par terre
         if (rotationTotal < 90f && mustFall)
         {
             float vitesseTombee = 90.0f / DureeTombee;
             transform.Rotate(player.transform.right, Time.deltaTime * vitesseTombee, Space.World);
             rotationTotal += Mathf.Abs(vitesseTombee) * Time.deltaTime;
         }
+        //Arrète l'animation
         else if (rotationTotal >= 90f)
         {
             mustFall = false;
@@ -56,7 +59,7 @@ public class Arbre : MonoBehaviour, IAbattable
             }
         }
     }
-
+    //Cette méthode fait apparaître le bûche de l'arbre
     IEnumerator affichageLog()
     {
         yield return new WaitForSeconds(1);
