@@ -36,7 +36,7 @@ public class Soleil : MonoBehaviour
     /// <summary>
     /// Indique si on est présentement pendant la nuit (entre 21h et 8h am)
     /// </summary>
-    public bool EstNuit => ProportionRestante >= 0.67f || ProportionRestante <= 0.12f;
+    public bool EstNuit => ProportionRestante >= 0.66f || ProportionRestante <= 0.12f;
 
     [Header("Rotation pour changer graduellement la direction des ombres")]
     [SerializeField] private Vector3 rotationDepart;
@@ -50,7 +50,7 @@ public class Soleil : MonoBehaviour
     private Light _light;
     private float _ancienPourcentage;    
     private float dureeJournee = ConstantesJeu.MINUTES_PAR_JOUR; // 24 heures
-    private float dureeJourneeRestante;
+    [HideInInspector][SerializeField] private float dureeJourneeRestante;
 
     // Pour les différentes phases de la journée
     private const float progression21h = 21.0f / 24;

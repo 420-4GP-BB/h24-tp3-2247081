@@ -16,8 +16,6 @@ public class SauvegarderPoulet : SauvegardeBase
 
     public override void LoadFromData(JsonData data)
     {
-        // PATCH: On reconstruit l'objet EtatPatrouille car les points ont été détruits.
-        // Même l'indice doit être reconstruit.
         GameObject[] points = GetComponent<MouvementPoulet>()._pointsDeDeplacement;
         garderPoints = points.Clone() as Transform[];
         JsonUtility.FromJsonOverwrite(data["mouvement"].ToString(), GetComponent<MouvementPoulet>());

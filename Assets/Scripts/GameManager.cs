@@ -17,9 +17,11 @@ public class GameManager : MonoBehaviour
     private GameObject[] pointsRenard;
 
     public int NumeroJour = 1;
+    [HideInInspector][SerializeField] private int SaveNum;
 
     void Start()
     {
+        _soleil = GameObject.Find("Directional Light").GetComponent<Soleil>();
         pointsRenard = GameObject.FindGameObjectsWithTag("PointsRenard");
         _joueur = GameObject.Find(ParametresParties.Instance.selectionPersonnage).GetComponent<ComportementJoueur>();
         _inventaireJoueur = _joueur.GetComponent<Inventaire>();
@@ -45,6 +47,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        SaveNum = NumeroJour;
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             SceneManager.LoadScene("MenuConfiguration");

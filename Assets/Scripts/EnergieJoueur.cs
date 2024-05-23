@@ -9,9 +9,9 @@ public class EnergieJoueur : MonoBehaviour
 
     private Soleil _soleil;
     private ComportementJoueur _mouvementJoueur;
-    private float _energie = 1.0f;
+    [HideInInspector][SerializeField] private float _energie = 1.0f;
 
-    [SerializeField] public float Energie
+    public float Energie
     {
         get => _energie;
         set
@@ -25,7 +25,6 @@ public class EnergieJoueur : MonoBehaviour
 
     void Start()
     {
-        _energie = 1.0f;
         _mouvementJoueur = GetComponent<ComportementJoueur>();
         _soleil = GameObject.Find("Directional Light").GetComponent<Soleil>();
     }

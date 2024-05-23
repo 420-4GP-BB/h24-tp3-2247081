@@ -11,17 +11,12 @@ public class SauvegarderJoueur : SauvegardeBase
         data["temps"] = JsonUtility.ToJson(GameObject.Find("Directional Light").GetComponent<Soleil>());
         data["gameManager"] = JsonUtility.ToJson(GameObject.Find("GameManager").GetComponent<GameManager>());
 
-        Debug.Log(data["inventaire"]);
-        Debug.Log(data["energie"]);
-        Debug.Log(data["temps"]);
-        Debug.Log(data["gameManager"]);
-
         PlayerPrefs.SetString("Nom", ParametresParties.Instance.NomJoueur);
         PlayerPrefs.SetString("Personnage", ParametresParties.Instance.selectionPersonnage);
         PlayerPrefs.SetString("Generation", ParametresParties.Instance.selectionArbre);
         PlayerPrefs.Save();
 
-        return SavedTransform;
+        return data;
     }
 
     public override void LoadFromData(JsonData data)

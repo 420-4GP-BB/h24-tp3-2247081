@@ -29,7 +29,6 @@ public class GestionnaireSauvegarde
     private GestionnaireSauvegarde()
     {
         _cheminFichier = Path.Combine(Application.persistentDataPath, "sauvegarde.json");
-        Debug.Log(_cheminFichier);
     }
 
     // Dit si le fichier de sauvegarde existe
@@ -43,7 +42,7 @@ public class GestionnaireSauvegarde
         JsonData result = new JsonData();
 
         var allSaveables = GameObject.FindObjectsOfType<MonoBehaviour>().OfType<ISaveable>();
-        Debug.Log(allSaveables);
+
         JsonData savedObjects = new JsonData();
         foreach (var saveable in allSaveables)
         {
