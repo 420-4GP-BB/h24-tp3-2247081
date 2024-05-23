@@ -11,12 +11,14 @@ public class spawnCollation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Créer la collation au début du jeu
         createCollation();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Condition permettant de voir si il y a déjà un collation
         if (spawnPlace.transform.childCount <= 0 && !isRunning)
         {
             isRunning = true;
@@ -26,12 +28,14 @@ public class spawnCollation : MonoBehaviour
 
     void createCollation()
     {
+        //Création de la collation
         Instantiate(tableCollation[Random.Range(0,3)], transform.position, Quaternion.identity, spawnPlace);
         isRunning = false;
     }
 
     IEnumerator compterSecondes()
     {
+        //Compte à rebours
         yield return new WaitForSecondsRealtime(30);
         createCollation();
     }
