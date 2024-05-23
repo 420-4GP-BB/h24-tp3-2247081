@@ -5,6 +5,7 @@ public class SauvegarderJoueur : SauvegardeBase
 {
     public override JsonData SavedData()
     {
+        //Sauvegarde les informations de le joueur
         JsonData data = SavedTransform;
         data["inventaire"] = JsonUtility.ToJson(GetComponent<Inventaire>());
         data["energie"] = JsonUtility.ToJson(GetComponent<EnergieJoueur>());
@@ -21,6 +22,7 @@ public class SauvegarderJoueur : SauvegardeBase
 
     public override void LoadFromData(JsonData data)
     {
+        //Load les informations de la joueur
         JsonUtility.FromJsonOverwrite(data["inventaire"].ToString(), GetComponent<Inventaire>());
         JsonUtility.FromJsonOverwrite(data["energie"].ToString(), GetComponent<EnergieJoueur>());
         JsonUtility.FromJsonOverwrite(data["temps"].ToString(), GameObject.Find("Directional Light").GetComponent<Soleil>());

@@ -9,6 +9,7 @@ public class SauvegarderPoulet : SauvegardeBase
 
     public override JsonData SavedData()
     {
+        //Sauvegarde les informations de la poule
         JsonData data = SavedTransform;
         data["mouvement"] = JsonUtility.ToJson(GetComponent<MouvementPoulet>());
         return data;
@@ -16,6 +17,7 @@ public class SauvegarderPoulet : SauvegardeBase
 
     public override void LoadFromData(JsonData data)
     {
+        //Load les informations de la poule
         GameObject[] points = GetComponent<MouvementPoulet>()._pointsDeDeplacement;
         garderPoints = points.Clone() as Transform[];
         JsonUtility.FromJsonOverwrite(data["mouvement"].ToString(), GetComponent<MouvementPoulet>());

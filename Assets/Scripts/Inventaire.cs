@@ -10,6 +10,7 @@ public class Inventaire : MonoBehaviour, ISerializationCallbackReceiver
     public int Graines { get; set; }
     public int Bois { get; set; }
 
+    //Varaible qui permet les sauvegardes
     [HideInInspector][SerializeField] private int _or;
     [HideInInspector][SerializeField] private int _oeuf;
     [HideInInspector][SerializeField] private int _choux;
@@ -18,22 +19,7 @@ public class Inventaire : MonoBehaviour, ISerializationCallbackReceiver
 
     void Awake()
     {
-        if (_or == 0 && _oeuf == 0 && _choux == 0 && _graines == 0 && _bois == 0)
-        {
-            Or = ParametresParties.Instance.OrDepart;
-            Oeuf = ParametresParties.Instance.OeufsDepart;
-            Graines = ParametresParties.Instance.SemencesDepart;
-            Choux = 0;
-            Bois = 0;
-        }
-        else
-        {
-            Or = _or;
-            Oeuf = _oeuf;
-            Graines = _choux;
-            Choux = _graines;
-            Bois = _bois;
-        }
+
     }
 
     public void ToutPerdre()
@@ -54,6 +40,8 @@ public class Inventaire : MonoBehaviour, ISerializationCallbackReceiver
         Bois = 1000;
     }
 
+    //Référence : https://docs.unity3d.com/ScriptReference/ISerializationCallbackReceiver.html
+    //Permet de set les informations lors de la charge
     public void OnBeforeSerialize()
     {
         _or = Or;
@@ -63,6 +51,7 @@ public class Inventaire : MonoBehaviour, ISerializationCallbackReceiver
         _bois = Bois;
     }
 
+    //Permet de set les informations après de la charge
     public void OnAfterDeserialize()
     {
         Or = _or;
